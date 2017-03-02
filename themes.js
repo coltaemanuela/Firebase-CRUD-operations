@@ -98,12 +98,9 @@ router.post('/add', upload.single('image'), function(req, res) {
 
                 // Delete the file from the hard disk
                 fs.unlink(filePath, function(err) {
-                    //err && console.error(err);
                     console.error(err);
-                });             
-               // res.redirect('/admin/themes');
+                });                           
             });
-
             fs.createReadStream(filePath).pipe(storageFileStream);
         });
     });
@@ -180,8 +177,7 @@ router.post('/edit', upload.single('image'), function(req, res) {
                 });
 
                 fs.unlink(filePath, function(err) {
-                    //err && console.error(err);
-                    console.error(err);
+                   console.error(err);
                 });
                 firebase.database().ref(`themes/` + id).update({
                     'title': title,
